@@ -1,39 +1,14 @@
 var express = require('express');
+const productHelpers = require('./helpers/product-helpers');
 var router = express.Router();
+var fs = require('fs'); 
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  let products = [
-    {
-      num:'123456',
-      name:"Macbook Pro 16'",
-      category:"laptops",
-      description:"best in class",
-      image:"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207"
-    },
-    {
-      num:'123456',
-      name:"Macbook Pro 16'",
-      category:"laptops",
-      description:"best in class",
-      image:"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207"
-    },
-    {
-      num:'123456',
-      name:"Macbook Pro 16'",
-      category:"laptops",
-      description:"best in class",
-      image:"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207"
-    },
-    {
-      num:'123456',
-      name:"Macbook Pro 16'",
-      category:"laptops",
-      description:"best in class",
-      image:"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207"
-    }
-  ]
-  res.render('admin/view-products',{admin:true,products})
+  productHelpers.getAllProducts().then((products)=>{
+    res.render('admin/view-products',{admin:true,products})
+  })
+ 
 });
 
 router.get('/add-products',(req,res)=>{
@@ -43,5 +18,19 @@ router.get('/add-products',(req,res)=>{
 router.post('/add-products',(req,res)=>{
   console.log(req.body);
   console.log(req.files.image);
+
+  productHelpers.addProduct(req.body,(id)=>{
+    let image = req.files.image;
+    console.log(image);
+    console.log(image.data);
+    fs.writeFile("./public/product-images/"+id+'.jpg', image.data, 'binary', function(err) { 
+    console.log("The file was saved!");
+
+    
+  });
+  res.render('admin/add-products');
 });
+
+});
+
 module.exports = router;
