@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   productHelpers.getAllProducts().then((products)=>{
-    res.render('index', {products,admin:false });
+    res.render('user/view-products', {products,admin:false });
   });
   
 });
