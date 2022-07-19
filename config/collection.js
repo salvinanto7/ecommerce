@@ -1,3 +1,4 @@
 module.exports={
-    PRODUCT_COL:'product'
+    PRODUCT_COL:'product',
+    USER_COL:'user'
 }
