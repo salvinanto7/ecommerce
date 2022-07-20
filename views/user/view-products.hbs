@@ -1,18 +1,18 @@
 <section>
-  <div class='container mt-5 mb-5'>
-    <div class='row'>
+  <div class='container-fluid mt-5'>
+    <div class='row d-flex'>
       {{#each products}}
-        <div class='col-md-3'>
-          <div class='card' style='width: 18rem;'>
+        <div class='col-md-2 m-2'>
+          <div class='card d-flex' style='width: 18rem; height:30rem'>
             <img src="/product-images/{{this._id}}.jpg" class='card-img-top' alt='...' />
-            <div class='card-body'>
+            <div class='card-body flex-column'>
               <h5 class='card-title'>
                 {{this.name}}
               </h5>
               <p class='card-text'>
                 {{this.description}}
               </p>
-              <a href='#' class='btn btn-primary'>
+              <a href='#' class=' mt-auto btn btn-primary'>
                 Add to Cart
               </a>
             </div>
