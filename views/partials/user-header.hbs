@@ -51,19 +51,21 @@
           aria-haspopup='true'
           aria-expanded='false'
         >
+          {{#if user}}
+            {{user.firstname}}
+          {{else}}
           Account
+          {{/if}}
         </a>
 
         <div class='dropdown-menu ml-auto' aria-labelledby='dropdownMenuLink'>
+          {{#if user}}
+          <a class='dropdown-item' href="/logout">Logout</a>
+          {{else}}
           <a class='dropdown-item' href='/login'>
             login
           </a>
-          <a class='dropdown-item' href='#'>
-            Another action
-          </a>
-          <a class='dropdown-item' href='#'>
-            Something else here
-          </a>
+          {{/if}}
         </div>
       </div>
     </div>

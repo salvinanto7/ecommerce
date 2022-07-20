@@ -12,6 +12,7 @@ var busboyparser=require('busboy-body-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var forms = multer();
+var session = require('express-session');
 var app = express();
 var db = require('./config/connection')
 // view engine setup
@@ -23,6 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret:"key",cookie:{maxAge:60000}}));
 app.use(express.static(path.join(__dirname, 'public')));
 db.connect((err)=>{
   if(err) console.log('connection error'+err);
