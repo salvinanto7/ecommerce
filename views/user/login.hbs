@@ -38,6 +38,9 @@
     <button type='submit' class='btn btn-primary mt-3'>
       Submit
     </button>
+    {{#if loginErr}}
+      <p class="alert alert-danger alert-dismissible fade show mt-5">{{loginErr}}</p>
+    {{/if}}
   </form>
   </div>
   </div>
