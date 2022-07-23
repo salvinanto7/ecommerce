@@ -47,9 +47,16 @@ router.get('/edit-product/:id',async(req,res)=>{
   res.render('admin/edit-product',{prod})
 });
 
-router.post('edit-product/:id',(req,res)=>{
+router.post('/edit-product/:id',(req,res)=>{
+  console.log(req.params.id)
   productHelpers.updateProductDetails(req.params.id,req.body).then(()=>{
-    res.redirect('/admin')
+    res.redirect('/admin');
+    //if (req.files.Image){
+    //  let image = req.files.Image;
+    //  fs.writeFile("./public/product-images/"+req.params.id+'.jpg', image.data, 'binary', function(err) { 
+    //    console.log("The file was updated!");
+    //})   
+    //}
   })
   
   });

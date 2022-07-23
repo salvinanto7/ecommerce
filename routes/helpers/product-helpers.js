@@ -38,10 +38,10 @@ module.exports={
             db.get().collection(collection.PRODUCT_COL)
             .updateOne({_id:objectId(prodId)},{
                 $set:{
+                    num:ProdDetails.num,
                     name:ProdDetails.name,
                     category:ProdDetails.category,
-                    description:ProdDetails.description,
-                    num:ProdDetails.num
+                    description:ProdDetails.description
                 }
             }).then((response)=>{
                 resolve()
