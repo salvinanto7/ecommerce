@@ -25,5 +25,27 @@ module.exports={
             })
         })
 
+    },
+    getProductDetails:(prodId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COL).findOne({_id:objectId(prodId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    updatePrdouctDetails:(prodId,ProdDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COL)
+            .updateOne({_id:objectId(prodId)},{
+                $set:{
+                    name:ProdDetails.name,
+                    category:ProdDetails.category,
+                    description:ProdDetails.description,
+                    num:ProdDetails.num
+                }
+            }).then((response)=>{
+                resolve()
+            })
+        })
     }
 }

@@ -1,0 +1,75 @@
+<section>
+  <div class='container'>
+    <h4>Edit Product</h4>
+    <div class='row'>
+      <div class='col-md-6'>
+        <form action="/admin/edit-products/:id" method="POST" enctype="multipart/form-data">
+          <div class='form-group mt-4'>
+            <label for=''>
+              Num
+            </label>
+            <input
+              type='text'
+              class='form-control'
+              name="num"
+              placeholder='Product name'
+              value="{{prod.num}}"
+            />
+          </div>
+          <div class='form-group mt-4'>
+            <label for=''>
+              Name
+            </label>
+            <input
+              type='text'
+              class='form-control'
+              name="name"
+              placeholder='Product name'
+              value="{{prod.name}}"
+            />
+          </div>
+          <div class='form-group mt-4'>
+            <label for=''>
+              Category
+            </label>
+            <input
+              type='text'
+              class='form-control'
+              name="category"
+              placeholder='Category'
+              value="{{prod.category}}"
+            />
+          </div>
+          <div class='form-group mt-4'>
+            <label for=''>
+              Description
+            </label>
+            <input
+              type='text'
+              class='form-control'
+              name="description"
+              placeholder='Product name'
+              value="{{prod.description}}"
+            />
+          </div>
+          <div class='form-group mt-4'>
+            <label for=''>
+              Image
+            </label>
+            <img src="../../product-images/{{prod._id}}.jpg" alt="" style="width:150px;height:150px">
+            <input
+              type='file'
+              class='form-control'
+              name="image"
+              placeholder='Image'
+              
+            />
+          </div>
+          <button type='submit' class='btn btn-primary mt-4' onclick="return confirm('Are you sure you want to update {{this.name}}?')">
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
