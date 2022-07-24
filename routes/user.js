@@ -37,6 +37,8 @@ router.post('/signup',(req,res)=>{
   //console.log(req.body)
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);
+    req.session.loggedIn=true;
+    req.session.user = response;
   })
 });
 
@@ -61,6 +63,7 @@ router.get('/logout',(req,res)=>{
 router.get('/cart',verifyLogin,(req,res)=>{
   res.render('user/cart');
 });
+
 
 
 module.exports = router;
