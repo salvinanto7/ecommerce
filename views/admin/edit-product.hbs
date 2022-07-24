@@ -56,13 +56,13 @@
             <label for=''>
               Image
             </label>
-            <img src="../../product-images/{{prod._id}}.jpg" alt="" style="width:150px;height:150px">
+            <img src="../../product-images/{{prod._id}}.jpg" alt="" style="width:150px;height:150px" id="imgView">
             <input
               type='file'
               class='form-control'
-              name="image"
               placeholder='Image'
-              
+              name="image"
+              onchange="changeImg(event)"
             />
           </div>
           <button type='submit' class='btn btn-primary mt-4' onclick="return confirm('Are you sure you want to update {{this.name}}?')">
@@ -73,3 +73,9 @@
     </div>
   </div>
 </section>
+
+<script>
+    function changeImg(event){
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>

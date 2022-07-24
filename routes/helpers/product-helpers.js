@@ -45,7 +45,7 @@ module.exports={
                     description:ProdDetails.description
                 }
             }).then((response)=>{
-                resolve(response)
+                resolve()
                 })
         })
     },

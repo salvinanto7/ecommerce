@@ -48,15 +48,19 @@ router.get('/edit-product/:id',async(req,res)=>{
 });
 
 router.post('/edit-product/:id',(req,res)=>{
-  console.log(req.params.id)
-  productHelpers.updatePrdouctDetails(req.params.id,req.body).then((response)=>{
+  //console.log(req)
+  //console.log(req.files.Image)
+  productHelpers.updatePrdouctDetails(req.params.id,req.body).then(()=>{
+    //console.log(req.files.image)
+    if (req.files.image){
+      //console.log("yes");
+      let image = req.files.image;
+      //console.log(image.data)
+      fs.writeFile("./public/product-images/"+req.params.id+'.jpg', image.data, 'binary', function(err) { 
+        console.log("The file was updated!");
+    })   
+    }
     res.redirect('/admin');
-    //if (req.files.Image){
-    //  let image = req.files.Image;
-    //  fs.writeFile("./public/product-images/"+req.params.id+'.jpg', image.data, 'binary', function(err) { 
-    //    console.log("The file was updated!");
-    //})   
-    //}
   })
   
   });
