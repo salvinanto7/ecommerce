@@ -34,6 +34,7 @@ module.exports={
         })
     },
     updatePrdouctDetails:(prodId,ProdDetails)=>{
+        console.log(ProdDetails);
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.PRODUCT_COL)
             .updateOne({_id:objectId(prodId)},{
@@ -44,8 +45,8 @@ module.exports={
                     description:ProdDetails.description
                 }
             }).then((response)=>{
-                resolve()
-            })
+                resolve(response)
+                })
         })
-    }
+    },
 }
