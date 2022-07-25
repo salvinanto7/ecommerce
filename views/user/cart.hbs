@@ -1,8 +1,43 @@
 <section>
-    <div class="container">
-        <h4 class="mt-3">Shopping Cart</h4>
-        <div class="row">
-
-        </div>
+  <div class='container'>
+    <h4 class='mt-3'>
+      Shopping Cart
+    </h4>
+    <div class='row'>
+      <table class='table mt-5'>
+        <thead>
+          <tr>
+            <th scope='col'> 
+              Item
+            </th>
+            <th scope='col'>
+              Description
+            </th>
+            <th scope="col">
+              Quantity
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each cartProds}}
+            <tr>
+              <td>
+                <img src="/product-images/{{this._id}}.jpg" alt="" style="width:50px;height:50px;">
+              </td>
+              <td>
+                {{this.name}}
+                {{this.description}}
+              </td>
+              <td>
+                <button class=" btn btn-primary mr-3">-</button>1<button class="btn btn-primary ml-3">+</button>
+              </td>
+              <td>
+                <a href="" class="btn btn-danger">Remove</a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
+  </div>
 </section>
