@@ -76,7 +76,8 @@ router.get('/add-to-cart/:id',verifyLogin,(req,res)=>{
   //console.log(req.session.id);
   //console.log(req.session.user);
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
-    res.redirect('/')
+    res.json({status:true})
+    //res.redirect('/')
   })
 })
 
