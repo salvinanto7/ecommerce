@@ -5,7 +5,7 @@ function addToCart(prodId){
       success:(response)=>{
         if(response.status){
             let count =$("#cart-count").html()
-            console.log(count+"success")
+            console.log(count+" success")
             count = parseInt(count)+1
             $("#cart-count").html(count)
         }
