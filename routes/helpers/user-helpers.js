@@ -56,7 +56,7 @@ module.exports={
                 //console.log(prodExist)
                 if (prodExist!=-1){
                     db.get().collection(collection.CART_COL)
-                    .updateOne({'products.item':objectId(prodId)},
+                    .updateOne({user:objectId(userId),'products.item':objectId(prodId)},
                     {
                         $inc:{'products.$.quantity':1}
                     }).then(()=>{
@@ -105,7 +105,13 @@ module.exports={
                         foreignField:'_id',
                         as:'product'
                     }
-                }/*
+                },
+                {
+                    $project:{
+                        item:1,quantity:1,product:{$arrayElemAt:['$product',0]}
+                    }
+                }
+                    /*
                 {
                     $lookup:{
                         from:collection.PRODUCT_COL,
@@ -136,6 +142,19 @@ module.exports={
                 cartCount = cart.products.length
             }
             resolve(cartCount);
+        })
+    },
+    changeProductQuantity:(details)=>{
+        console.log(details)
+        return new Promise((resolve,response)=>{
+            db.get().collection(collection.CART_COL)
+                    .updateOne({_id:objectId(details.cart),'products.item':objectId(details.product)},
+                    {
+                        $inc:{'products.$.quantity':parseInt(details.count)}
+                    }).then((response)=>{
+                        console.log(response)
+                        resolve()
+                    })
         })
     }
 } 
