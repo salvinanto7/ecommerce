@@ -1,2 +1,2 @@
 # ecommerce
-simlple ecommerce app using Node.js
+simple ecommerce app using Node.js

@@ -42,6 +42,10 @@ module.exports={
     },
 
     addToCart:(prodId,userId)=>{
+        let prodObj ={
+            item:objectId(prodId),
+            quantity:1
+        }
         return new Promise(async(resolve,reject)=>{
             let userCart = await db.get().collection(collection.CART_COL).findOne({user:objectId(userId)});
             if (userCart){
@@ -55,7 +59,7 @@ module.exports={
             }else{
                 let cartObj = {
                     user:objectId(userId),
-                    products:[objectId(prodId)]
+                    products:[prodObj]
                 }
                 db.get().collection(collection.CART_COL).insertOne(cartObj).then((response)=>{
                     resolve()
