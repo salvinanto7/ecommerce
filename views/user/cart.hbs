@@ -29,7 +29,9 @@
                 {{this.product.description}}
               </td>
               <td>
-                <button class=" btn btn-primary mr-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',-1)">-</button>{{this.quantity}}<button class="btn btn-primary ml-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',1)">+</button>
+                <button class=" btn btn-primary mr-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',-1)">-</button>
+                <span id="{{this.product._id}}">{{this.quantity}}</span>
+                <button class="btn btn-primary ml-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',1)">+</button>
               </td>
               <td>
                 <a href="" class="btn btn-danger">Remove</a>
