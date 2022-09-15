@@ -46,16 +46,25 @@
 
 <script>
   function changeCount(cartId,prodId,val){
+    let quantity = parseInt(document.getElementById(prodId).innerHTML)
+    val = parseInt(val)
     $.ajax({
       url:'/change-product-quantity',
       data:{
         cart:cartId,
         product:prodId,
-        count:val
+        count:val,
+        quantity:quantity
       },
       method:'post',
-      success:(resposse)=>{
-        alert(response)
+      success:(response)=>{
+        if(response.removeProduct){
+          alert("Product removed from cart")
+          location.reload()
+        }else{
+          documet.getElementById(prodId).innerHTML=quantity+count
+        }
+        
       }
     })
   }

@@ -82,9 +82,9 @@ router.get('/add-to-cart/:id',verifyLogin,(req,res)=>{
   })
 })
 
-router.post('/change-product-quantity',verifyLogin,(req,res)=>{
-  userHelpers.changeProductQuantity(req.body).then(()=>{
-    res.redirect('/cart')
+router.post('/change-product-quantity',(req,res)=>{
+  userHelpers.changeProductQuantity(req.body).then((response)=>{
+    res.json(response)
   })
 })
 module.exports = router;
