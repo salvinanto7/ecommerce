@@ -67,7 +67,7 @@ router.get('/logout',(req,res)=>{
 
 router.get('/cart',verifyLogin,(req,res)=>{
   userHelpers.getCartProducts(req.session.user._id).then((cartProds)=>{
-    console.log(cartProds)
+    //console.log(cartProds)
     let cartCount = cartProds.length
     res.render('user/cart',{cartProds,user:req.session.user,cartCount});
   })

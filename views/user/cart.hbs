@@ -21,6 +21,7 @@
         <tbody>
           {{#each cartProds}}
             <tr>
+              {{#each this.product}}
               <td>
                 <img src="/product-images/{{this._id}}.jpg" alt="" style="width:50px;height:50px;">
               </td>
@@ -28,8 +29,9 @@
                 {{this.name}}
                 {{this.description}}
               </td>
+              {{/each}}
               <td>
-                <button class=" btn btn-primary mr-3">-</button>1<button class="btn btn-primary ml-3">+</button>
+                <button class=" btn btn-primary mr-3">-</button>{{this.quantity}}<button class="btn btn-primary ml-3">+</button>
               </td>
               <td>
                 <a href="" class="btn btn-danger">Remove</a>
