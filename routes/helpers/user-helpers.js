@@ -1,6 +1,8 @@
 var db = require('../../config/connection')
 var collection = require('../../config/collection')
 var bcrypt = require('bcrypt')
+const { ObjectID } = require('bson')
+const e = require('express')
 var objectId = require('mongodb').ObjectId
 
 module.exports={
@@ -49,19 +51,50 @@ module.exports={
         return new Promise(async(resolve,reject)=>{
             let userCart = await db.get().collection(collection.CART_COL).findOne({user:objectId(userId)});
             if (userCart){
+                //console.log(userCart.products.getIndex(objectId(prodId)));
+                let prodExist = userCart.products.findIndex(product=> product.item==prodId);
+                console.log(prodExist)
+                if (prodExist!=-1){
+                    db.get().collection(collection.CART_COL)
+                    .updateOne({'products.item':objectId(prodId)},
+                    {
+                        $inc:{'products.$.quantity':1}
+                    }).then(()=>{
+                        resolve()
+                    })
+                }else{
                 db.get().collection(collection.CART_COL)
                 .updateOne({user:objectId(userId)},
                     {
-                        $push:{products:objectId(prodId)}
+                        $push:{products:prodObj}
                     
                     }
-                )
+                )}/*
+                userCart.findOne({'products.item':prodId},(err,docs)=>{
+                    if (err){
+                        db.get().collection(collection.CART_COL)
+                        .updateOne({user:objectId(userId)},
+                            {
+                                $push:{products:prodObj}
+                            
+                            })
+                     }else{
+                        db.get().collection(collection.CART_COL)
+                        .updateOne({'products.item':ObjectId(prodId)},
+                        {
+                            $inc:{'products.$.quantity':1}
+                        }).then(()=>{
+                            resolve()
+                        })
+                     }
+                   })*/
             }else{
                 let cartObj = {
                     user:objectId(userId),
                     products:[prodObj]
                 }
-                db.get().collection(collection.CART_COL).insertOne(cartObj).then((response)=>{
+                db.get().collection(collection.CART_COL)
+                .insertOne(cartObj).then((response)=>{
                     resolve()
                 })
             }
