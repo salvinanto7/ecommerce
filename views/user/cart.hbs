@@ -44,9 +44,7 @@
               <td>
                 <button
                   class='btn btn-primary mr-3'
-                  onclick="changeCount('{{this._id}}','{{
-                    this.product._id
-                  }}',-1)"
+                  onclick="changeCount('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)"
                 >
                   -
                 </button>
@@ -55,7 +53,7 @@
                 </span>
                 <button
                   class='btn btn-primary ml-3'
-                  onclick="changeCount('{{this._id}}','{{this.product._id}}',1)"
+                  onclick="changeCount('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)"
                 >
                   +
                 </button>
@@ -81,9 +79,9 @@
     <div style='display:block; margin-right:8rem' class='float-right pr-5'>
       
       <hr>
-      <div>
+      <div id="total">
         <b>
-          Total : {{total}}
+          Total : Rs.{{total}}
         </b>
       </div>
       <a href="/place-order" class="btn btn-success mt-3">Place order</a>
@@ -92,12 +90,13 @@
 </section>
 
 <script>
-  function changeCount(cartId,prodId,val){
+  function changeCount(cartId,prodId,userId,val){
     let quantity = parseInt(document.getElementById(prodId).innerHTML)
     val = parseInt(val)
     $.ajax({
       url:'/change-product-quantity',
       data:{
+        user:userId,
         cart:cartId,
         product:prodId,
         count:val,
@@ -112,6 +111,7 @@
         }else{
           //console.log("else case update count")
           document.getElementById(prodId).innerHTML=quantity+val
+          document.getElementById('total').innerHTML = "<b>Total : Rs. "+response.total+"</b>"
         }
         
       }
