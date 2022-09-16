@@ -45,7 +45,7 @@
                 <button class="btn btn-primary ml-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',1)">+</button>
               </td>
               <td>
-                <a href="" class="btn btn-danger">Remove</a>
+                <a href="" class="btn btn-danger" onclick="removeProduct('{{this._id}}','{{this.product._id}}')">Remove</a>
               </td>
             </tr>
           {{/each}}
@@ -78,6 +78,19 @@
           document.getElementById(prodId).innerHTML=quantity+val
         }
         
+      }
+    })
+  }
+  function removeProduct(cartId,prodId){
+    $.ajax({
+      url:'/remove-product',
+      data:{
+        cart:cartId,
+        product:prodId
+      },
+      method:'post',
+      success:(response)=>{
+        alert("Product removed from cart")
       }
     })
   }

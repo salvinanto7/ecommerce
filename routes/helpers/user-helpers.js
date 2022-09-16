@@ -3,6 +3,7 @@ var collection = require("../../config/collection");
 var bcrypt = require("bcrypt");
 const { ObjectID } = require("bson");
 const e = require("express");
+const { response } = require("express");
 var objectId = require("mongodb").ObjectId;
 
 module.exports = {
@@ -197,4 +198,17 @@ module.exports = {
       }
     });
   },
+
+  removeProduct:(cartDetails)=>{
+    return new Promise((resolve,response)=>{
+      db.get().collection(collection.CART_COL).updateOne({_id:objectId(cartDetails.cart)},
+        {
+          $pull:{products:{item:objectId(cartDetails.product)}}
+        }).then((response)=>{
+          resolve(true)
+        })
+    })
+  }
+
+
 };
