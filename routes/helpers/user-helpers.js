@@ -246,7 +246,7 @@ module.exports = {
           {
             $group:{
               _id:null,
-              total:{$sum:{$multiply:[parseInt('$quantity'),parseInt('$product.price')]}}
+              total:{$sum:{$multiply:[{$toInt:'$quantity'},{$toInt:'$product.price'}]}}
             }
           }
         ])
