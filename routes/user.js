@@ -65,11 +65,12 @@ router.get('/logout',(req,res)=>{
   res.redirect('/login');
 });
 
-router.get('/cart',verifyLogin,(req,res)=>{
+router.get('/cart',verifyLogin,async(req,res)=>{
+  let total = await userHelpers.getCartTotal(req.session.user._id)
   userHelpers.getCartProducts(req.session.user._id).then((cartProds)=>{
     //console.log(cartProds)
     let cartCount = cartProds.length
-    res.render('user/cart',{cartProds,user:req.session.user,cartCount});
+    res.render('user/cart',{cartProds,user:req.session.user,cartCount,total});
   })
 });
 
