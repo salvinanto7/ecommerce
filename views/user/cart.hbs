@@ -11,7 +11,13 @@
               Item
             </th>
             <th scope='col'>
+              Product
+            </th>
+            <th scope='col'>
               Description
+            </th>
+            <th scope="col">
+              Price
             </th>
             <th scope="col">
               Quantity
@@ -26,7 +32,12 @@
               </td>
               <td>
                 {{this.product.name}}
+                </td>
+              <td>
                 {{this.product.description}}
+              </td>
+              <td>
+                {{this.product.price}}
               </td>
               <td>
                 <button class=" btn btn-primary mr-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',-1)">-</button>
@@ -59,9 +70,11 @@
       method:'post',
       success:(response)=>{
         if(response.removeProduct){
+          console.log("if case executed")
           alert("Product removed from cart")
           location.reload()
         }else{
+          console.log("else case update count")
           document.getElementById(prodId).innerHTML=quantity+count
         }
         

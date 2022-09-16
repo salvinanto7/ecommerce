@@ -42,7 +42,8 @@ module.exports={
                     num:ProdDetails.num,
                     name:ProdDetails.name,
                     category:ProdDetails.category,
-                    description:ProdDetails.description
+                    description:ProdDetails.description,
+                    price:ProdDetails.price
                 }
             }).then((response)=>{
                 resolve()
