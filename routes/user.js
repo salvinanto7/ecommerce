@@ -94,10 +94,12 @@ router.post('/remove-product',(req,res)=>{
   })
 })
 
-router.get('/place-order',verifyLogin,(req,res)=>{
+router.get('/place-order',verifyLogin,async(req,res)=>{
+  let total=await userHelpers.getCartTotal(req.session.user._id)
+  console.log(total)
   userHelpers.getCartProducts(req.session.user._id).then((cartProds)=>{
-    console.log(cartProds)
-    res.render('user/place-order',{cartProds,user:req.session.user});
+    //console.log(cartProds)
+    res.render('user/place-order',{cartProds,user:req.session.user,total});
   })
 })
 module.exports = router;

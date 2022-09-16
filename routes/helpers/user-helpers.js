@@ -208,7 +208,53 @@ module.exports = {
           resolve(true)
         })
     })
-  }
+  },
+
+  getCartTotal:(userId) => {
+    return new Promise(async (resolve, reject) => {
+      let total = await db
+        .get()
+        .collection(collection.CART_COL)
+        .aggregate([
+          {
+            $match: { user: objectId(userId) },
+          },
+          {
+            $unwind: "$products",
+          },
+          {
+            $project: {
+              item: "$products.item",
+              quantity: "$products.quantity",
+            }
+          },
+          {
+            $lookup: {
+              from: collection.PRODUCT_COL,
+              localField: "item",
+              foreignField: "_id",
+              as: "product",
+            }
+          },
+          {
+            $project: {
+              item: 1,
+              quantity: 1,
+              product: { $arrayElemAt: ["$product", 0] },
+            }
+          },
+          {
+            $group:{
+              _id:null,
+              total:{$sum:{$multiply:[parseInt('$quantity'),parseInt('$product.price')]}}
+            }
+          }
+        ])
+        .toArray();
+      console.log(total)
+      resolve(total[0].total);
+    });
 
 
-};
+}
+}
