@@ -93,4 +93,11 @@ router.post('/remove-product',(req,res)=>{
     res.json(response)
   })
 })
+
+router.get('/place-order',verifyLogin,(req,res)=>{
+  userHelpers.getCartProducts(req.session.user._id).then((cartProds)=>{
+    console.log(cartProds)
+    res.render('user/place-order',{cartProds,user:req.session.user});
+  })
+})
 module.exports = router;

@@ -7,7 +7,7 @@
       <table class='table mt-5'>
         <thead>
           <tr>
-            <th scope='col'> 
+            <th scope='col'>
               Item
             </th>
             <th scope='col'>
@@ -16,11 +16,11 @@
             <th scope='col'>
               Description
             </th>
-            <th scope="col">
-              Price
-            </th>
-            <th scope="col">
+            <th scope='col'>
               Quantity
+            </th>
+            <th scope='col'>
+              Price
             </th>
           </tr>
         </thead>
@@ -28,29 +28,70 @@
           {{#each cartProds}}
             <tr>
               <td>
-                <img src="/product-images/{{this.product._id}}.jpg" alt="" style="width:50px;height:50px;">
+                <img
+                  src="/product-images/{{this.product._id}}.jpg"
+                  alt=''
+                  style='width:50px;height:50px;'
+                />
               </td>
               <td>
                 {{this.product.name}}
-                </td>
+              </td>
               <td>
                 {{this.product.description}}
               </td>
+
               <td>
+                <button
+                  class='btn btn-primary mr-3'
+                  onclick="changeCount('{{this._id}}','{{
+                    this.product._id
+                  }}',-1)"
+                >
+                  -
+                </button>
+                <span id="{{this.product._id}}">
+                  {{this.quantity}}
+                </span>
+                <button
+                  class='btn btn-primary ml-3'
+                  onclick="changeCount('{{this._id}}','{{this.product._id}}',1)"
+                >
+                  +
+                </button>
+              </td>
+               <td>
                 {{this.product.price}}
               </td>
               <td>
-                <button class=" btn btn-primary mr-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',-1)">-</button>
-                <span id="{{this.product._id}}">{{this.quantity}}</span>
-                <button class="btn btn-primary ml-3" onclick="changeCount('{{this._id}}','{{this.product._id}}',1)">+</button>
-              </td>
-              <td>
-                <a href="" class="btn btn-danger" onclick="removeProduct('{{this._id}}','{{this.product._id}}')">Remove</a>
+                <a
+                  href=''
+                  class='btn btn-danger'
+                  onclick="removeProduct('{{this._id}}','{{this.product._id}}')"
+                >
+                  Remove
+                </a>
               </td>
             </tr>
           {{/each}}
         </tbody>
       </table>
+      <hr style='width:100%;text-algin:center' />
+    </div>
+    <div style='display:block' class='float-right mr-5 pr-5'>
+      <div>
+        Subtotal : 14842
+      </div>
+      <div>
+        Delivery charge : 100
+      </div>
+      <hr />
+      <div>
+        <b>
+          Total : 14842
+        </b>
+      </div>
+      <a href="/place-order" class="btn btn-success mt-3">Place order</a>
     </div>
   </div>
 </section>
@@ -70,17 +111,18 @@
       method:'post',
       success:(response)=>{
         if(response.removeProduct){
-          console.log("if case executed")
+          //console.log("if case executed")
           alert("Product removed from cart")
           location.reload()
         }else{
-          console.log("else case update count")
+          //console.log("else case update count")
           document.getElementById(prodId).innerHTML=quantity+val
         }
         
       }
     })
   }
+
   function removeProduct(cartId,prodId){
     $.ajax({
       url:'/remove-product',
@@ -91,6 +133,7 @@
       method:'post',
       success:(response)=>{
         alert("Product removed from cart")
+        location.reload()
       }
     })
   }
