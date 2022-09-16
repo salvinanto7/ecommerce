@@ -40,7 +40,6 @@
             placeholder='Pincode'
           />
         </div>
-      </form>
     </div>
     <div class="col-md-4 ml-auto mr-5 border border-info rounded">
         <h4 class="text-center m-4">Cart Details</h4>
@@ -52,14 +51,15 @@
         <p>Total : {{total}}</p>
         <h6 class="mt-4"><b>Payment Option</b></h6>
         <div class="form-group m-2">
-            <input type="radio">
+            <input type="radio" name="payment-method" value="COD">
             <label for="">Cash On Delivery(COD)</label>
         </div>
         <div class="form-group m-2">
-            <input type="radio">
+            <input type="radio" name="payment-method" value="online">
             <label for="">Online Payment</label>
         </div>
         <a href="/check-out" class="btn btn-primary float-right m-3">Check out</a>
     </div>
+     </form>
   </div>
 </section>
