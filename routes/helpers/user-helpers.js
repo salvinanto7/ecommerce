@@ -253,6 +253,7 @@ module.exports = {
         .toArray();
       console.log(total)
       resolve(total[0].total);
+      
     });
   },
 
@@ -272,6 +273,7 @@ module.exports = {
     }
 
     db.get().collection(collection.ORDER_COL).insertOne(orderObject).then((response)=>{
+      db.get().collection(collection.CART_COL).deleteOne({user:objectId(userId)})
       resolve(status)
     })
   }
