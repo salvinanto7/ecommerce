@@ -112,10 +112,30 @@ router.post('/place-order',verifyLogin,async(req,res)=>{
   // console.log(products);
   // console.log(userId);
   userHelpers.placeOrder(userId,products,req.body).then((response)=>{
-    res.json(response)
+    if (response==='placed'){
+      res.redirect('/order-success');
+    }else{
+      res.render('user/payment');
+    }
   })
     //console.log("order placed")
   
+})
+ router.get('/order-success',verifyLogin,(req,res)=>{
+    res.render('user/order-success');
+ })
+
+router.get('/orders',verifyLogin,async(req,res)=>{
+  let userId = req.session.user._id;
+  await userHelpers.getAllOrders(userId).then((orders)=>{
+    res.render('user/orders',{userId,orders,user:req.session.user})
+  })
+})
+
+router.get('/order-products/:id',verifyLogin,async(req,res)=>{
+  let orderId = req.params.id
+  let products = await userHelpers.getOrderProducts(orderId)
+  res.render('user/ordered-products',{products})
 })
 
 module.exports = router;

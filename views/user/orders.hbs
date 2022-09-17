@@ -1,0 +1,53 @@
+<section>
+  <div class='container'>
+    <h4 class='mt-3'>
+     Your Orders
+    </h4>
+    <div class='row'>
+      <table class='table mt-5'>
+        <thead>
+          <tr>
+            <th scope='col'>
+              OrderId
+            </th>
+            <th scope='col'>
+              Date
+            </th>
+            <th scope='col'>
+                Shipping Address
+            </th>
+            <th scope='col'>
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+            <tr>
+              <td>
+                {{this._id}}
+              </td>
+              <td>
+                {{this.date}}
+              </td>
+              <td>
+                <pre>
+{{this.delivery.address}}
+{{this.delivery.pincode}}
+{{this.delivery.mobile}}
+                </pre>
+              </td>
+              <td>
+                {{this.Amount}}
+              </td>
+              <td>
+                <a href="/order-products/{{this._id}}" class="btn btn-primary">View products</a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <hr style='width:100%;text-algin:center' >
+    </div>
+  </div>
+</section>

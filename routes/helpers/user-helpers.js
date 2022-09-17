@@ -155,6 +155,7 @@ module.exports = {
       resolve(cartItems);
     });
   },
+
   getCartCount: (userId) => {
     return new Promise(async (resolve, rejecct) => {
       let cartCount = 0;
@@ -168,6 +169,7 @@ module.exports = {
       resolve(cartCount);
     });
   },
+
   changeProductQuantity: (details) => {
     //console.log(details)
     return new Promise((resolve, response) => {
@@ -277,5 +279,82 @@ module.exports = {
       resolve(status)
     })
   }
-)}
+)},
+
+getAllOrders:(userId)=>{
+  return new Promise(async(resolve,reject)=>{
+    let order = await db.get().collection(collection.ORDER_COL)
+    .find({user:objectId(userId)}).toArray()
+    // .aggregate([
+    //   {
+    //     $match: { user: objectId(userId) },
+    //   },
+    //   {
+    //     $unwind: "$products",
+    //   },
+    //   {
+    //     $project: {
+    //       item: "$products.item",
+    //       quantity: "$products.quantity",
+    //     }
+    //   },
+    //     {
+    //       $lookup: {
+    //         from: collection.PRODUCT_COL,
+    //         localField: "item",
+    //         foreignField: "_id",
+    //         as: "product",
+    //       }
+    //     },
+    //     {
+    //       $project: {
+    //         item: 1,
+    //         quantity: 1,
+    //         product: { $arrayElemAt: ["$product", 0] },
+    //       }
+    //     }
+    //   ]).toArray()
+    // .find({user:objectId(userId)},{products:1,Amount:1})
+     //console.log(order)
+    resolve(order)
+  })
+},
+
+getOrderProducts:(orderId)=>{
+  return new Promise(async(resolve,reject)=>{
+    console.log(orderId)
+    let products = await db.get().collection(collection.CART_COL)
+    .aggregate([
+      {
+        $match: {_id: objectId(orderId)},
+      },
+      {
+        $unwind: "$products",
+      },
+      {
+        $project: {
+          item: "$products.item",
+          quantity: "$products.quantity",
+        }
+      },
+      {
+        $lookup: {
+          from: collection.PRODUCT_COL,
+          localField: "item",
+          foreignField: "_id",
+          as: "product",
+        }
+      },
+      {
+        $project: {
+          item: 1,
+          quantity: 1,
+          product: { $arrayElemAt: ["$product", 0] },
+        }
+      }
+    ]).toArray()
+    console.log(products)
+    resolve(products)
+  })
+}
 }
