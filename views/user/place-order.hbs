@@ -6,18 +6,7 @@
   </div>
   <div class='row'>
     <div class='col-md-6'>
-      <form action='/check-out' method="post">
-        <div class='form-group mt-4'>
-          <label for=''>
-            Name
-          </label>
-          <input
-            type='text'
-            class='form-control'
-            name='name'
-            placeholder='Name'
-          />
-        </div>
+      <form action='/place-order' method="post">
         <div class='form-group mt-4'>
           <label for=''>
             Address
@@ -40,7 +29,23 @@
             placeholder='Pincode'
           />
         </div>
+         <div class='form-group mt-4'>
+          <label for=''>
+            Mobile
+          </label>
+          <input
+            type='text'
+            class='form-control'
+            name='mobile'
+            placeholder='Mobile number'
+          />
+        </div>
+          <!--<input type="text" name="userId" value="{{user._id}}" hidden>
+          <input type="" name="products" value="{{cartProds}}" hidden>-->
+          <input type="text" name="total" value="{{total}}" hidden>
+
     </div>
+
     <div class="col-md-4 ml-auto mr-5 border border-info rounded">
         <h4 class="text-center m-4">Cart Details</h4>
         <ul>
@@ -51,14 +56,14 @@
         <p>Total : {{total}}</p>
         <h6 class="mt-4"><b>Payment Option</b></h6>
         <div class="form-group m-2">
-            <input type="radio" name="payment-method" value="COD">
+            <input type="radio" name="paymentMethod" value="COD" checked>
             <label for="">Cash On Delivery(COD)</label>
         </div>
         <div class="form-group m-2">
-            <input type="radio" name="payment-method" value="online">
+            <input type="radio" name="paymentMethod" value="online">
             <label for="">Online Payment</label>
         </div>
-        <a href="/check-out" class="btn btn-primary float-right m-3">Check out</a>
+        <button class="btn btn-primary float-right m-3">Check out</button>
     </div>
      </form>
   </div>

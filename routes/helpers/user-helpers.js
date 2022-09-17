@@ -254,7 +254,26 @@ module.exports = {
       console.log(total)
       resolve(total[0].total);
     });
+  },
 
+  placeOrder:(userId,products,formData)=>{
+    return new Promise((resolve,reject)=>{
+    let status=formData.paymentMethod==='COD'?'placed':'pending'
+    let orderObject = {
+      user:objectId(userId),
+      products:products,
+      delivery:{
+        address:formData.address,
+        mobile:formData.mobile,
+        pincode:formData.pincode
+      },
+      Amount:formData.total,
+      status:status
+    }
 
-}
+    db.get().collection(collection.ORDER_COL).insertOne(orderObject).then((response)=>{
+      resolve(status)
+    })
+  }
+)}
 }
