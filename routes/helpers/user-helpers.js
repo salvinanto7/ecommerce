@@ -271,7 +271,8 @@ module.exports = {
         pincode:formData.pincode
       },
       Amount:formData.total,
-      status:status
+      status:status,
+      date:new Date()
     }
 
     db.get().collection(collection.ORDER_COL).insertOne(orderObject).then((response)=>{
