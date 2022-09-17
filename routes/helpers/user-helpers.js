@@ -323,7 +323,7 @@ getAllOrders:(userId)=>{
 getOrderProducts:(orderId)=>{
   return new Promise(async(resolve,reject)=>{
     console.log(orderId)
-    let products = await db.get().collection(collection.CART_COL)
+    let products = await db.get().collection(collection.ORDER_COL)
     .aggregate([
       {
         $match: {_id:objectId(orderId)},
