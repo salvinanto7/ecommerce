@@ -28,7 +28,6 @@ router.get('/login',(req,res)=>{
     res.redirect('/');
   }
   else{
-    console.log("yeah right")
     res.render('admin/login',{admin:true,loginErr:req.session.adminLoginErr});
     req.session.adminLoginErr = false;
   }
@@ -36,7 +35,7 @@ router.get('/login',(req,res)=>{
 
 
 router.post('/login',(req,res)=>{
-  console.log("pst request called")
+  //console.log("pst request called")
   adminHelpers.Login(req.body).then((response)=>{
     if (response.status){
       req.session.admin = response.admin;
