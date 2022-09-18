@@ -1,21 +1,64 @@
 var express = require('express');
 const productHelpers = require('./helpers/product-helpers');
+const adminHelpers  = require('./helpers/admin-helpers');
 var router = express.Router();
 var fs = require('fs'); 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+const verifyLogin=(req,res,next)=>{
+  if (req.session.admin!=null){
+  if (req.session.admin.loggedIn){
+    next()
+  }
+  }else{
+    res.redirect('/admin/login')
+  }
+}
+
+/* GET admin listing. */
+router.get('/',verifyLogin,(req, res, next)=>{
   productHelpers.getAllProducts().then((products)=>{
-    res.render('admin/view-products',{admin:true,products})
+    res.render('admin/view-products',{admin:true,products,user:req.session.admin})
   })
  
 });
 
-router.get('/add-products',(req,res)=>{
+
+router.get('/login',(req,res)=>{
+  if(req.session.admin){
+    res.redirect('/');
+  }
+  else{
+    console.log("yeah right")
+    res.render('admin/login',{admin:true,loginErr:req.session.adminLoginErr});
+    req.session.adminLoginErr = false;
+  }
+});
+
+
+router.post('/login',(req,res)=>{
+  console.log("pst request called")
+  adminHelpers.Login(req.body).then((response)=>{
+    if (response.status){
+      req.session.admin = response.admin;
+      req.session.admin.loggedIn =true;
+      res.redirect('/admin');
+    }else{
+      req.session.adminLoginErr = "Invalid admin username or password";
+      res.redirect('/admin/login');
+    }
+  })
+})
+
+router.get('/logout',(req,res)=>{
+  req.session.admin=null;
+  res.redirect('/admin/login');
+});
+
+router.get('/add-products',verifyLogin,(req,res)=>{
   res.render('admin/add-products',{admin:true});
 });
 
-router.post('/add-products',(req,res)=>{
+router.post('/add-products',verifyLogin,(req,res)=>{
   console.log(req.body);
   console.log(req.files.image);
 
@@ -33,7 +76,7 @@ router.post('/add-products',(req,res)=>{
 
 });
 
-router.get('/delete-product/:id',(req,res)=>{
+router.get('/delete-product/:id',verifyLogin,(req,res)=>{
   let prodId = req.params.id
   console.log(prodId)
   productHelpers.deleteProduct(prodId).then((response)=>{
@@ -41,13 +84,13 @@ router.get('/delete-product/:id',(req,res)=>{
   })
 });
 
-router.get('/edit-product/:id',async(req,res)=>{
+router.get('/edit-product/:id',verifyLogin,async(req,res)=>{
   let prod = await productHelpers.getProductDetails(req.params.id)
   //console.log(prod)
   res.render('admin/edit-product',{prod})
 });
 
-router.post('/edit-product/:id',(req,res)=>{
+router.post('/edit-product/:id',verifyLogin,(req,res)=>{
   //console.log(req)
   //console.log(req.files.Image)
   productHelpers.updatePrdouctDetails(req.params.id,req.body).then(()=>{

@@ -43,14 +43,40 @@
             </li>
             -->
           </ul>
-          <div class="dropdown show">
+          {{!-- <div class="dropdown show">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Account 
-  </a>
+  </a> --}}
+  <div class='dropdown show'>
+        <a
+          class='btn btn-secondary dropdown-toggle'
+          href='#'
+          role='button'
+          id='dropdownMenuLink'
+          data-toggle='dropdown'
+          aria-haspopup='true'
+          aria-expanded='false'
+        >
+          {{#if user}}
+            {{user.firstname}}
+          {{else}}
+          Account
+          {{/if}}
+        </a>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class='dropdown-menu ml-auto' aria-labelledby='dropdownMenuLink'>
+          {{#if user}}
+          <a class='dropdown-item' href="/admin/logout">Logout</a>
+          {{else}}
+          <a class='dropdown-item' href='/admin/login'>
+            login
+          </a>
+          {{/if}}
+        </div>
+      </div>
+  {{!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="/login">login</a>
-  </div>
+  </div> --}}
 </div>
           </form>
         </div>
