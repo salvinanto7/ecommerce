@@ -1,2 +1,2 @@
 # ecommerce
-simple ecommerce app using Node.js
+simple ecommerce app using HTML CSS Bootstrap JS and MongoDB
