@@ -1,0 +1,508 @@
+{
+    "fields": [
+      {
+        "name": "_id",
+        "path": "_id",
+        "count": 2,
+        "types": [
+          {
+            "name": "ObjectID",
+            "bsonType": "ObjectID",
+            "path": "_id",
+            "count": 2,
+            "values": [
+              "6326c758d65f9b292547a6ef",
+              "6325f88036749e00539e2fec"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 2,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 2,
+        "type": "ObjectID",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "Amount",
+        "path": "Amount",
+        "count": 2,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "Amount",
+            "count": 2,
+            "values": [
+              "49000",
+              "27000"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 2,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 2,
+        "type": "String",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "date",
+        "path": "date",
+        "count": 2,
+        "types": [
+          {
+            "name": "Date",
+            "bsonType": "Date",
+            "path": "date",
+            "count": 2,
+            "values": [
+              "2022-09-18T07:23:04.673Z",
+              "2022-09-17T16:40:32.081Z"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 2,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 2,
+        "type": "Date",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "delivery",
+        "path": "delivery",
+        "count": 2,
+        "types": [
+          {
+            "name": "Document",
+            "bsonType": "Document",
+            "path": "delivery",
+            "count": 2,
+            "fields": [
+              {
+                "name": "address",
+                "path": "delivery.address",
+                "count": 2,
+                "types": [
+                  {
+                    "name": "String",
+                    "bsonType": "String",
+                    "path": "delivery.address",
+                    "count": 2,
+                    "values": [
+                      "testadd",
+                      "salvin"
+                    ],
+                    "total_count": 0,
+                    "probability": 1,
+                    "unique": 2,
+                    "has_duplicates": false
+                  }
+                ],
+                "total_count": 2,
+                "type": "String",
+                "has_duplicates": false,
+                "probability": 1
+              },
+              {
+                "name": "mobile",
+                "path": "delivery.mobile",
+                "count": 2,
+                "types": [
+                  {
+                    "name": "String",
+                    "bsonType": "String",
+                    "path": "delivery.mobile",
+                    "count": 2,
+                    "values": [
+                      "testmob",
+                      "84511323984"
+                    ],
+                    "total_count": 0,
+                    "probability": 1,
+                    "unique": 2,
+                    "has_duplicates": false
+                  }
+                ],
+                "total_count": 2,
+                "type": "String",
+                "has_duplicates": false,
+                "probability": 1
+              },
+              {
+                "name": "pincode",
+                "path": "delivery.pincode",
+                "count": 2,
+                "types": [
+                  {
+                    "name": "String",
+                    "bsonType": "String",
+                    "path": "delivery.pincode",
+                    "count": 2,
+                    "values": [
+                      "testpin",
+                      "14651"
+                    ],
+                    "total_count": 0,
+                    "probability": 1,
+                    "unique": 2,
+                    "has_duplicates": false
+                  }
+                ],
+                "total_count": 2,
+                "type": "String",
+                "has_duplicates": false,
+                "probability": 1
+              }
+            ],
+            "total_count": 0,
+            "probability": 1
+          }
+        ],
+        "total_count": 2,
+        "type": "Document",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "products",
+        "path": "products",
+        "count": 2,
+        "types": [
+          {
+            "name": "Array",
+            "bsonType": "Array",
+            "path": "products",
+            "count": 2,
+            "types": [
+              {
+                "name": "Document",
+                "bsonType": "Document",
+                "path": "products",
+                "count": 2,
+                "fields": [
+                  {
+                    "name": "_id",
+                    "path": "products._id",
+                    "count": 2,
+                    "types": [
+                      {
+                        "name": "ObjectID",
+                        "bsonType": "ObjectID",
+                        "path": "products._id",
+                        "count": 2,
+                        "values": [
+                          "6326c73dd65f9b292547a6ee",
+                          "6325f829f10c0b787ec94589"
+                        ],
+                        "total_count": 0,
+                        "probability": 1,
+                        "unique": 2,
+                        "has_duplicates": false
+                      }
+                    ],
+                    "total_count": 2,
+                    "type": "ObjectID",
+                    "has_duplicates": false,
+                    "probability": 1
+                  },
+                  {
+                    "name": "item",
+                    "path": "products.item",
+                    "count": 2,
+                    "types": [
+                      {
+                        "name": "ObjectID",
+                        "bsonType": "ObjectID",
+                        "path": "products.item",
+                        "count": 2,
+                        "values": [
+                          "62d8bcbf2d75d069b18f5ff2",
+                          "62d8baec1838750952cb3d6b"
+                        ],
+                        "total_count": 0,
+                        "probability": 1,
+                        "unique": 2,
+                        "has_duplicates": false
+                      }
+                    ],
+                    "total_count": 2,
+                    "type": "ObjectID",
+                    "has_duplicates": false,
+                    "probability": 1
+                  },
+                  {
+                    "name": "product",
+                    "path": "products.product",
+                    "count": 2,
+                    "types": [
+                      {
+                        "name": "Document",
+                        "bsonType": "Document",
+                        "path": "products.product",
+                        "count": 2,
+                        "fields": [
+                          {
+                            "name": "_id",
+                            "path": "products.product._id",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "ObjectID",
+                                "bsonType": "ObjectID",
+                                "path": "products.product._id",
+                                "count": 2,
+                                "values": [
+                                  "62d8bcbf2d75d069b18f5ff2",
+                                  "62d8baec1838750952cb3d6b"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "ObjectID",
+                            "has_duplicates": false,
+                            "probability": 1
+                          },
+                          {
+                            "name": "category",
+                            "path": "products.product.category",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "String",
+                                "bsonType": "String",
+                                "path": "products.product.category",
+                                "count": 2,
+                                "values": [
+                                  "Speakers",
+                                  "Monitors"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "String",
+                            "has_duplicates": false,
+                            "probability": 1
+                          },
+                          {
+                            "name": "description",
+                            "path": "products.product.description",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "String",
+                                "bsonType": "String",
+                                "path": "products.product.description",
+                                "count": 2,
+                                "values": [
+                                  "Best in class",
+                                  "3ms gaming monitor"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "String",
+                            "has_duplicates": false,
+                            "probability": 1
+                          },
+                          {
+                            "name": "name",
+                            "path": "products.product.name",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "String",
+                                "bsonType": "String",
+                                "path": "products.product.name",
+                                "count": 2,
+                                "values": [
+                                  "Marshal speakers",
+                                  "Nitro monitor 60.44"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "String",
+                            "has_duplicates": false,
+                            "probability": 1
+                          },
+                          {
+                            "name": "num",
+                            "path": "products.product.num",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "String",
+                                "bsonType": "String",
+                                "path": "products.product.num",
+                                "count": 2,
+                                "values": [
+                                  "7",
+                                  "5"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "String",
+                            "has_duplicates": false,
+                            "probability": 1
+                          },
+                          {
+                            "name": "price",
+                            "path": "products.product.price",
+                            "count": 2,
+                            "types": [
+                              {
+                                "name": "String",
+                                "bsonType": "String",
+                                "path": "products.product.price",
+                                "count": 2,
+                                "values": [
+                                  "49000",
+                                  "27000"
+                                ],
+                                "total_count": 0,
+                                "probability": 1,
+                                "unique": 2,
+                                "has_duplicates": false
+                              }
+                            ],
+                            "total_count": 2,
+                            "type": "String",
+                            "has_duplicates": false,
+                            "probability": 1
+                          }
+                        ],
+                        "total_count": 0,
+                        "probability": 1
+                      }
+                    ],
+                    "total_count": 2,
+                    "type": "Document",
+                    "has_duplicates": false,
+                    "probability": 1
+                  },
+                  {
+                    "name": "quantity",
+                    "path": "products.quantity",
+                    "count": 2,
+                    "types": [
+                      {
+                        "name": "Int32",
+                        "bsonType": "Int32",
+                        "path": "products.quantity",
+                        "count": 2,
+                        "values": [
+                          1,
+                          1
+                        ],
+                        "total_count": 0,
+                        "probability": 1,
+                        "unique": 1,
+                        "has_duplicates": true
+                      }
+                    ],
+                    "total_count": 2,
+                    "type": "Int32",
+                    "has_duplicates": true,
+                    "probability": 1
+                  }
+                ],
+                "total_count": 0,
+                "probability": 1
+              }
+            ],
+            "lengths": [
+              1,
+              1
+            ],
+            "total_count": 2,
+            "probability": 1,
+            "average_length": 1
+          }
+        ],
+        "total_count": 2,
+        "type": "Array",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "status",
+        "path": "status",
+        "count": 2,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "status",
+            "count": 2,
+            "values": [
+              "placed",
+              "placed"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 1,
+            "has_duplicates": true
+          }
+        ],
+        "total_count": 2,
+        "type": "String",
+        "has_duplicates": true,
+        "probability": 1
+      },
+      {
+        "name": "user",
+        "path": "user",
+        "count": 2,
+        "types": [
+          {
+            "name": "ObjectID",
+            "bsonType": "ObjectID",
+            "path": "user",
+            "count": 2,
+            "values": [
+              "62d7701ff720b6b41fa36d18",
+              "62d7701ff720b6b41fa36d18"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 1,
+            "has_duplicates": true
+          }
+        ],
+        "total_count": 2,
+        "type": "ObjectID",
+        "has_duplicates": true,
+        "probability": 1
+      }
+    ],
+    "count": 2
+  }

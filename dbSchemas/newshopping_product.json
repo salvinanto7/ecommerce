@@ -1,0 +1,179 @@
+{
+    "fields": [
+      {
+        "name": "_id",
+        "path": "_id",
+        "count": 6,
+        "types": [
+          {
+            "name": "ObjectID",
+            "bsonType": "ObjectID",
+            "path": "_id",
+            "count": 6,
+            "values": [
+              "62d8baec1838750952cb3d6b",
+              "62d8bd042d75d069b18f5ff3",
+              "62dbdb2980668bc44757484d",
+              "62d8bcbf2d75d069b18f5ff2",
+              "62d8b629b592d6e6276370bd",
+              "62d8bb7e2f619658dcebc917"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 6,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 6,
+        "type": "ObjectID",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "category",
+        "path": "category",
+        "count": 6,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "category",
+            "count": 6,
+            "values": [
+              "Monitors",
+              "Mobiles",
+              "Ear Buds",
+              "Speakers",
+              "Laptops",
+              "DSLR"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 6,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 6,
+        "type": "String",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "description",
+        "path": "description",
+        "count": 6,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "description",
+            "count": 6,
+            "values": [
+              "3ms gaming monitor",
+              "12gb/259gb",
+              "Active noise cancellation ear buds",
+              "Best in class",
+              "Best in class",
+              "Beginners Best"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 5,
+            "has_duplicates": true
+          }
+        ],
+        "total_count": 6,
+        "type": "String",
+        "has_duplicates": true,
+        "probability": 1
+      },
+      {
+        "name": "name",
+        "path": "name",
+        "count": 6,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "name",
+            "count": 6,
+            "values": [
+              "Nitro monitor 60.44",
+              "iphone 13 pro",
+              "Samsung bud pro",
+              "Marshal speakers",
+              "Macbook pro 14",
+              "Canon 1500D"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 6,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 6,
+        "type": "String",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "num",
+        "path": "num",
+        "count": 6,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "num",
+            "count": 6,
+            "values": [
+              "5",
+              "1",
+              "15",
+              "7",
+              "4",
+              "6"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 6,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 6,
+        "type": "String",
+        "has_duplicates": false,
+        "probability": 1
+      },
+      {
+        "name": "price",
+        "path": "price",
+        "count": 6,
+        "types": [
+          {
+            "name": "String",
+            "bsonType": "String",
+            "path": "price",
+            "count": 6,
+            "values": [
+              "27000",
+              "78000",
+              "4500",
+              "49000",
+              "189000",
+              "104000"
+            ],
+            "total_count": 0,
+            "probability": 1,
+            "unique": 6,
+            "has_duplicates": false
+          }
+        ],
+        "total_count": 6,
+        "type": "String",
+        "has_duplicates": false,
+        "probability": 1
+      }
+    ],
+    "count": 6
+  }

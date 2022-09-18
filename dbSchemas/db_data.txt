@@ -1,0 +1,11 @@
+db type: NoSQL
+db: MongoDB
+db name: newShopping 
+collections :   1. admin
+                2. cart
+                3. order
+                4. product
+                5. user
+
+Nb: You may change the collection names as well as db name but make sure to change the details in config>connection.js and config>collection.js
+Nb: Datas are dummy.
